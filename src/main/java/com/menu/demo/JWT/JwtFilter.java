@@ -33,7 +33,7 @@ protected void doFilterInternal(HttpServletRequest request, HttpServletResponse 
         throws ServletException, IOException {
 
     String authorizationHeader = request.getHeader("Authorization");
-    System.out.println("Authorization header: " + authorizationHeader);
+ 
     String jwt = null;
     String email = null;
 
