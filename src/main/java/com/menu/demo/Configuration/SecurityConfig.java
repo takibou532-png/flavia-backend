@@ -33,7 +33,7 @@ public class SecurityConfig {
 	
 	@Bean
 	public SecurityFilterChain secuirityFilterchain(HttpSecurity http) throws Exception {
-		http.cors(Customizer.withDefaults())
+		http.cors(cors -> cors.configurationSource(corsConfigurationSource()))
 		.csrf(AbstractHttpConfigurer::disable)
 		.authorizeHttpRequests(auth ->
 		auth.requestMatchers("/admin/login").permitAll()
@@ -68,7 +68,7 @@ public class SecurityConfig {
         
 		private CorsConfigurationSource corsConfigurationSource() {
 			CorsConfiguration config = new  CorsConfiguration();
-			config.setAllowedOrigins(List.of("http://localhost:5173","https://fflavia.netlify.app/"));
+			config.setAllowedOrigins(List.of("http://localhost:5173","https://fflavia.netlify.app"));
 			config.setAllowedMethods(List.of("POST","GET","PUT","DELETE","PATCH"));
 			config.setAllowedHeaders(List.of("Authorization","Content-Type"));
 			config.setAllowCredentials(true);
